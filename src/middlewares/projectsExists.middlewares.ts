@@ -8,13 +8,19 @@ const developerProjectsExistsMiddleware = async (
   res: Response,
   next: NextFunction
 ): Promise<Response | void> => {
+  const { developerId } = req.body;
+
+  if (!developerId) {
+    return next();
+  }
+
   const query: QueryResult<TDeveloperInfosRequest> = await client.query(
-    'SELECT * FROM  projects WHERE projects."developerId"= $1;',
-    [req.params.id]
+    `SELECT * FROM developers WHERE id = $1;`,
+    [developerId]
   );
 
   if (query.rowCount === 0) {
-    return res.status(404).json({ erros: "Developer not found!" });
+    return res.status(404).json({ message: "Developer not found!" });
   }
 
   next();

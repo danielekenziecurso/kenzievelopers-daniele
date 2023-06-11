@@ -13,7 +13,7 @@ const developerInfosExistsMiddleware = async (
     [req.params.id]
   );
 
-  if (query.rowCount !== 0) {
+  if (query.rowCount === 0) {
     return res.status(409).json({ erros: "Developer infos already exists!" });
   }
 
