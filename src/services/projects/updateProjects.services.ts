@@ -1,7 +1,3 @@
-import {
-  TDeveloper,
-  TDeveloperRequest,
-} from "../../interfeces/developers.interfaces";
 import format from "pg-format";
 import { QueryResult } from "pg";
 import { client } from "../../database";
@@ -17,7 +13,7 @@ const updateProjectServices = async (
   const queryString: string = format(
     `
           UPDATE
-               projects
+               "projects"
           SET(%I) = row(%L)
           WHERE
               id = $1

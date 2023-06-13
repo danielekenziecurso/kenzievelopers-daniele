@@ -3,7 +3,7 @@ import {
   TProjects,
   TProjectsRequest,
 } from "../../interfeces/projects.interfaces";
-import { createProjectsService } from "../../services/projects.services.ts/createProjects.services";
+import { createProjectsService } from "../../services/projects/createProjects.services";
 
 const createProjetsController = async (
   req: Request,

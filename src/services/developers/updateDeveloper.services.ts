@@ -13,7 +13,7 @@ const updateDeveloperservices = async (
   const queryString: string = format(
     `
           UPDATE
-               developers
+               "developers"
           SET(%I) = row(%L)
           WHERE
               id = $1

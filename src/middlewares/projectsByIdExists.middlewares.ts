@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { client } from "../database";
 import { QueryResult } from "pg";
 import { TDeveloperInfosRequest } from "../interfeces/developrInfos.interfaces";
+import { NotFound } from "../error";
 
 const projectsByIdExistsMiddleware = async (
   req: Request,
@@ -14,7 +15,7 @@ const projectsByIdExistsMiddleware = async (
   );
 
   if (query.rowCount === 0) {
-    return res.status(404).json({ erros: "project not found!" });
+    throw new NotFound("project not found!", 404);
   }
 
   next();

@@ -1,19 +1,20 @@
 import { Request, Response, NextFunction } from "express";
+import { AppError } from "../error";
 
 const developerInfosPreferredOSverify = (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<void> | Response<any, Record<string, any>> | undefined => {
+): void => {
   const { preferredOS } = req.body;
 
   const allowedOS = ["Windows", "Linux", "MacOS"];
 
   if (!allowedOS.includes(preferredOS)) {
-    return res.status(400).json({ error: "Invalid OS option!" });
+    throw new AppError("Invalid OS option!", 400);
   }
 
-  next();
+  return next();
 };
 
 export { developerInfosPreferredOSverify };

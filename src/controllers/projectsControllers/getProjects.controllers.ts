@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getProjectByIdService } from "../../services/projects.services.ts/getProjetsById.services";
+import { getProjectByIdService } from "../../services/projects/getProjetsById.services";
 
 const getProjectByIdController = async (
   req: Request,

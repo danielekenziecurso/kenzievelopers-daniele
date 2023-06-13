@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { updateDeveloperservices } from "../../services/developers/updateDeveloper.services";
 import { TProjects } from "../../interfeces/projects.interfaces";
-import { updateProjectServices } from "../../services/projects.services.ts/updateProjects.services";
+import { updateProjectServices } from "../../services/projects/updateProjects.services";
 
 const UpdateProjectController = async (
   req: Request,

@@ -1,17 +1,20 @@
 import { NextFunction, Request, Response } from "express";
-import { getDeveloperByIdService } from "../services/developers/getDeveloperById.services";
 import { AppError, NotFound } from "../error";
 import { QueryResult } from "pg";
 import { client } from "../database";
 
-const developerExistsMiddleware = async (
+const developerByIdExistsMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<Response | void> => {
+): Promise<void> => {
+  const { developerId } = req.body; 
+  if(!developerId){
+    return next();
+  }
   const query: QueryResult = await client.query(
     'SELECT * FROM "developers" WHERE "id" = $1;',
-    [req.params.id]
+    [developerId]
   );
 
   if (query.rowCount === 0) {
@@ -21,4 +24,4 @@ const developerExistsMiddleware = async (
   return next();
 }
 
-export { developerExistsMiddleware };
+export { developerByIdExistsMiddleware };

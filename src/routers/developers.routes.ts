@@ -36,6 +36,7 @@ clientsDevelops.post(
   "/:id/infos",
   developerInfosPreferredOSverify,
   developerInfosExistsMiddleware,
+  developerExistsMiddleware,
   createDevelopersInfosController
 );
 

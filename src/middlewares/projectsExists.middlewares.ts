@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { client } from "../database";
 import { QueryResult } from "pg";
 import { TDeveloperInfosRequest } from "../interfeces/developrInfos.interfaces";
+import { NotFound } from "../error";
 
 const developerProjectsExistsMiddleware = async (
   req: Request,
@@ -20,7 +21,7 @@ const developerProjectsExistsMiddleware = async (
   );
 
   if (query.rowCount === 0) {
-    return res.status(404).json({ message: "Developer not found!" });
+    throw new NotFound("Developer not found!", 404);
   }
 
   next();

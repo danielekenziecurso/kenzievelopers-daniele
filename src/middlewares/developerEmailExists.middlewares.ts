@@ -5,6 +5,7 @@ import {
 } from "../interfeces/developers.interfaces";
 import { NextFunction, Request, Response } from "express";
 import { client } from "../database";
+import { Conflict } from "../error";
 
 const developerCheckEmailExists = async (
   req: Request,
@@ -17,9 +18,9 @@ const developerCheckEmailExists = async (
           SELECT
               * 
           FROM
-              developers
+              "developers"
           WHERE 
-              email = $1;
+              "email" = $1;
       `;
   const queryConfig: QueryConfig = {
     text: queryString,
@@ -29,9 +30,8 @@ const developerCheckEmailExists = async (
   const queryResult: QueryResult<TDeveloper> = await client.query(queryConfig);
 
   if (queryResult.rowCount > 0) {
-    return res.status(409).json({
-      error: "Email already exists!",
-    });
+    throw new Conflict(
+      "Email already exists!", 409);
   }
   res.locals.developers = queryResult.rows;
   return next();

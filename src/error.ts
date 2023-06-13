@@ -1,21 +1,23 @@
 class AppError extends Error {
-    statusCode: number;
+    status: number;
   
-    constructor(message: string, statusCode: number = 400) {
+    constructor(message: string, status: number = 400) {
       super(message);
-      this.statusCode = statusCode;
+      this.status = status;
     }
   }
   
   class NotFound extends AppError {
-    constructor(message: string) {
+    constructor(message: string, status: number) {
       super(message, 404);
+      this.status = status
     }
   }
   
   class Conflict extends AppError {
-    constructor(message: string) {
+    constructor(message: string, status: number) {
       super(message, 409);
+      this.status = status
     }
   }
   

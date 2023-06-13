@@ -15,7 +15,7 @@ const createDevelopersService = async (
   const formatString: string = format(
     `
       INSERT INTO
-             developers
+             "developers"
            (%I)        
       VALUES
            (%L) 

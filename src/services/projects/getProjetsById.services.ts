@@ -2,7 +2,6 @@ import { QueryResult } from "pg";
 import { client } from "../../database";
 import { Project } from "../../interfeces/projects.interfaces";
 
-
 const getProjectByIdService = async (id: number): Promise<Project> => {
   const query = {
     text: `

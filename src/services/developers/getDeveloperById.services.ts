@@ -12,9 +12,9 @@ const getDeveloperByIdService = async (id: number): Promise<Developer> => {
     "di"."developerSince"  AS "developerInfoDeveloperSince",
     "di"."preferredOS"  AS "developerInfoPreferredOS"
   FROM
-    developers AS "d"
+    "developers" AS "d"
   LEFT JOIN
-    developerInfos AS "di" ON "d".id = "di"."developerId" 
+    "developerInfos" AS "di" ON "d".id = "di"."developerId" 
   WHERE
     "d".id = $1;
     `,

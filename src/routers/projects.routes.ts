@@ -4,7 +4,7 @@ import { developerProjectsExistsMiddleware } from "../middlewares/projectsExists
 import { getProjectByIdController } from "../controllers/projectsControllers/getProjects.controllers";
 import { projectsByIdExistsMiddleware } from "../middlewares/projectsByIdExists.middlewares";
 import { UpdateProjectController } from "../controllers/projectsControllers/updateProjects.Controllers";
-import { projectByDeveloperIdMiddleware } from "../middlewares/projectByIdexists.middlewares";
+import { developerByIdExistsMiddleware } from "../middlewares/developerByIdexists.middlewares";
 
 const clientProjects: Router = Router();
 
@@ -20,7 +20,7 @@ clientProjects.get(
 );
 clientProjects.patch(
   "/:id",
-  projectByDeveloperIdMiddleware,
+  developerByIdExistsMiddleware,
   projectsByIdExistsMiddleware,
   UpdateProjectController
 );

@@ -12,7 +12,7 @@ const createProjectsService = async (
   const formatString: string = format(
     `
         INSERT INTO
-               projects
+               "projects"
              (%I)        
         VALUES
              (%L) 
