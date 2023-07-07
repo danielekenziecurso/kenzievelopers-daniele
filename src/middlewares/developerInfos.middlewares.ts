@@ -10,7 +10,7 @@ const developerInfosExistsMiddleware = async (
   next: NextFunction
 ): Promise<Response | void> => {
   const query: QueryResult<TDeveloperInfosRequest> = await client.query(
-    'SELECT * FROM developerInfos WHERE developerInfos."developerId"= $1;',
+    'SELECT * FROM "developerInfos" WHERE "developerInfos"."developerId"= $1;',
     [req.params.id]
   );
 

@@ -21,8 +21,8 @@ clientsDevelops.get(
 
 clientsDevelops.patch(
   "/:id",
-  developerCheckEmailExists,
   developerExistsMiddleware,
+  developerCheckEmailExists,
   UpdateDevelopersController
 );
 
@@ -34,9 +34,9 @@ clientsDevelops.delete(
 
 clientsDevelops.post(
   "/:id/infos",
+  developerExistsMiddleware,
   developerInfosPreferredOSverify,
   developerInfosExistsMiddleware,
-  developerExistsMiddleware,
   createDevelopersInfosController
 );
 

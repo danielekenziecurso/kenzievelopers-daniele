@@ -8,7 +8,7 @@ const developerExistsMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
-): Promise<Response | void> => {
+): Promise<void> => {
   const query: QueryResult = await client.query(
     'SELECT * FROM "developers" WHERE "id" = $1;',
     [req.params.id]
