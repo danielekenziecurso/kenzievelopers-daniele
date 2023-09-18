@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # **Controle de projetos - KenzieVelopers**
 
 ## **Introdução**
@@ -674,3 +675,6 @@ A entrega deve seguir as seguintes regras:
       "message": "Developer not found."
     }
     ```
+=======
+# kenzievelopers-daniele
+>>>>>>> ea5ee9658ad8b4b3eec3aa9825986d632e888023
